@@ -1,0 +1,465 @@
+/* Rest */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main Styling */
+
+html,body{
+    font-family: 'poppins', sans-serif;
+    line-height: 1.7em;
+    overflow-x: hidden;
+}
+
+a{
+    color: #111;
+    text-decoration: none;
+}
+
+h1, h2, h3 {
+    padding-bottom: 20px;
+}
+
+p { 
+    margin: 10px 0;
+}
+
+/*Utility Classes*/
+.container {
+    margin: auto;
+    max-width: 1100px;
+    overflow: auto;
+    padding: 0 20px;
+}
+
+.btna {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    padding: 13px 45px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16); 
+}
+
+.btn-border-color{
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    background: transparent;
+    padding: 9px 41px;
+    border: 5px solid#DB0000;
+    cursor: pointer;
+    border-radius: 5px; 
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+}
+
+/* degrade */
+#degrade{
+    width: 100%;
+    height: 0.4rem;
+    background-image:  linear-gradient(90deg,rgba(0,204,219,1),rgba(219,0,74,1),rgba(0,88,219,1),rgba(216,174,7,1));
+}
+
+/* header */
+.overlay{
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(145deg,rgba(0,204,219,.75),rgba(219,0,74,.7));
+}
+
+#header {
+    height: 60%;
+}
+
+#header .header-content {
+    color: #fff;
+    text-align: center;
+    padding: 7rem 0 5rem;
+}
+
+
+.header-description p{
+    display: inline-block;
+    margin-left: 2em; 
+}
+
+#header .header-content h1{
+    font-size: 45px;
+    line-height: 1.2em;
+}
+
+#header .header-content p{
+    padding-bottom: 20px;
+    line-height: 1.7em;
+}
+
+#header .header-content a{
+    margin: 0 1.3rem;
+}
+
+#header .header-content .btn-header{
+    padding-top: 5rem;
+}
+
+/* Navbar */
+#navbar{
+}
+
+#navbar ul{
+    list-style: none;
+    text-align: center;
+}
+
+#navbar ul li{
+    display: inline-block;
+}
+
+#navbar ul li a{
+    font-size: 18px;
+    display: inline-block;
+    padding: 20px 18px;
+    margin: 0 5px;
+    border-bottom: 4px solid transparent;
+    opacity: 0.6;
+}
+
+#navbar ul li a:hover,
+#navbar ul li a.current{
+    font-weight: 800;
+    opacity: 1;
+}
+
+/* Categorie */
+#categorie .overlay-categorie{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(54, 54, 54, .93);
+}
+
+#categorie .overlay-categorie .cards{
+    padding: 1em;
+    color: #fff;
+}
+
+#categorie .categorie-indication{
+    margin: 4em 0;
+    width: 100%;
+}
+
+#categorie  .categorie-indication .left{
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 900;
+    width: 15%;
+    text-align: center;
+    padding: 0 2rem 0 0;
+}
+
+#categorie .categorie-indication .rigth{
+    float: right;
+    margin-top: 0.9em;
+    display: inline-block;
+    width: 85%;
+    height: 0.1em;
+}
+
+#categorie .overlay-categorie .contenu-categorie .cards{
+    padding: 1em 2em;
+}
+
+#categorie .overlay-categorie .contenu-categorie  .lien-categorie{
+    float: right;
+    margin: 1em;
+}
+
+#categorie .overlay-categorie .contenu-categorie  .lien-categorie .btn-categorie{
+    font-size: 1em;
+    font-weight: 800;
+    color: #fff;
+}
+
+#categorie .overlay-categorie .contenu-categorie .cards .card{
+    width: 25%;
+    height: 45%;
+    box-shadow: 0px 3px 90px rgba(0, 0, 0, 0.16);
+    margin:  2rem 1rem;
+}
+
+#categorie .overlay-categorie .contenu-categorie .cards .card .overlay-card{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, .27), rgba(0, 0, 0, 1));
+}
+
+#categorie .overlay-categorie .contenu-categorie .cards .card .card-content .header{
+    padding: 0.6em;
+    text-align: right;
+}
+
+#categorie .overlay-categorie .contenu-categorie .cards .card .card-content .header p{
+    font-size: 15px;
+    color: #FFBF10;
+    font-weight: 600;
+    text-shadow: 0px 1.5em 3em rgba(0, 0, 0, 0.527);
+}
+
+#categorie .overlay-categorie .contenu-categorie .cards .card .card-content .body {
+    margin-top: 40%;
+    padding: 0 2em;
+}
+
+#categorie .overlay-categorie .contenu-categorie .cards .card .card-content .body h2{
+    font-size: 18px;
+    margin-bottom: 1.2em;
+}
+
+#categorie .overlay-categorie .contenu-categorie .cards .card .card-content .body p{
+    font-size: 17px;
+}
+
+/* End categorie */
+
+/* Evenements */
+#evenement .overlay-green{
+    background-image: linear-gradient(45deg,rgba(0,88,219,.92),rgba(5,152,35,.76));
+    padding: 3rem;
+    text-align: center;
+    color: #fff;
+
+}
+
+#evenement .overlay-green .container img{
+    width: 20vw;
+}
+
+/* Evenement de la semaine */
+#evenement-semaine .container{
+    text-align: center;
+    padding: 1rem;
+}
+
+#evenement-semaine .container p{
+    font-size: 1.3em;
+    font-weight: 800;
+    opacity: 0.6;
+}
+
+/* Evenement slider */
+#evenements-slider {
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+#evenements-slider .evenement-background {
+    /* padding: 2rem 3rem; */
+}
+
+#evenements-slider .evenement-background .evenement-slider .overlay-blue{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 88, 219, 0.28);
+}
+
+#evenements-slider .evenement-background .evenement-slider{
+    width: auto;
+    height: 45vw;
+}
+
+#evenements-slider  .evenement-contenue {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding:  4rem 0;
+}
+
+#evenements-slider  .evenement-contenue .card .header{
+    text-align: left;
+    padding: 0 4rem;
+}
+
+#evenements-slider  .evenement-contenue .card .header .btn-even-header{
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: 800;
+    color: #fff;
+    /* background: #DB004A; */
+    padding: 0.8em 2.5em;
+    border: none;
+    cursor: pointer;
+}
+
+#evenements-slider .evenement-contenue .card .body{
+    padding: 2.5rem 2rem;
+}
+
+
+#evenements-slider .evenement-contenue .card .body h1{
+    margin: 2.5rem 0;
+    font-size: 2.7em;
+}
+
+#evenements-slider .evenement-contenue .card .body p{
+    display: inline-block;
+    margin: 2rem 4rem;
+    font-size: 0.9em;
+}
+
+#evenements-slider .evenement-contenue .card .body .btn-even{
+    margin: 2rem 0;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 800;
+    color: #fff;
+    background: #059823;
+    padding: 0.8em 2.5em;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* Partenaires */
+#partenaires{
+    padding: 2rem;
+    text-align: center;
+}
+
+#partenaires .header{
+    margin: 2rem 0;
+}
+
+#partenaires ul{
+    list-style: none;
+    text-align: center;
+}
+
+#partenaires ul li{
+    display: inline-block;
+    width: 7vw;
+    height: 7vw;
+    margin: 2rem 3.2rem;
+}
+
+#partenaires ul li img{
+    width: 100%;
+    height: 100%;
+}
+
+/* Button slick */
+
+.btn-slick-left{
+    -webkit-transform: translate(0, -25%);
+    -ms-transform: translate(0, -25%);
+    transform: translate(0, -25%);
+}
+
+.btn-slick-right{
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+
+
+/* Mise a jour page */
+
+/* navbar */
+.active1{
+    color: #FFBF10;
+    font-weight: bold;
+    border-bottom: 4px solid #FFBF10 !important;
+}
+
+.active2{
+    color: #0058DB;
+    font-weight: bold;
+    border-bottom:  4px solid #0058DB !important;
+}
+
+.active3{
+    color: #DB004A;
+    font-weight: bold;
+    border-bottom:  4px solid #DB004A !important;
+}
+
+/* boutton */
+
+.bouttonCouleur1{
+    background: #FFBF10;
+}
+
+.bouttonCouleur2{
+    background: #0058DB;
+}
+
+.bouttonCouleur3{
+    background: #DB004A;
+}
+
+/* Background */
+
+.couleur1{
+    background-color: rgba(54, 54, 54, .93);
+}
+
+.couleur2{
+    background-color: rgba(255, 255, 255, .91);
+}
+
+.couleur3{
+    background-color: rgba(255, 255, 255, .91);
+}
+
+/* indication categories */
+
+.couleurIndicationleft1{
+    color: #fff;
+    border: 1px solid #fff;
+    background: transparent;
+}
+
+.couleurIndicationrigth1{
+    background: #fff;
+}
+
+.couleurIndicationleft2{
+    color: #fff;
+    border: 1px solid #0058DB;
+    background: #0058DB;
+}
+
+.couleurIndicationrigth2{
+    background: #0058DB;
+}
+
+.couleurIndicationleft3{
+    color: #fff;
+    border: 1px solid #DB004A;
+    background: #DB004A;
+}
+
+.couleurIndicationrigth3{
+    background: #DB004A;
+}
+
+
+#navbar_mobile{
+    display: none;
+}
+
+#categorie .categorie-indication-mobile{
+    display: none;
+}
+
+
+.Flex{
+    display: flex;
+    background-color: #111;
+}
