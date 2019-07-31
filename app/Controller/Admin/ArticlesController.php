@@ -16,6 +16,7 @@ class ArticlesController extends AppController{
         
         $this->loadModel('articles');
         $this->loadModel('categories');
+        $this->loadModel('GrandeCategories');
 
     }
 
@@ -54,7 +55,8 @@ class ArticlesController extends AppController{
             redirect('users/login');
         }
 
-        $categories = $this->categories->getCategories();
+        $categories = $this->GrandeCategories->getGrandeCategories();
+        // $categories = $this->categories->getCategories();
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
            
@@ -108,7 +110,8 @@ class ArticlesController extends AppController{
     public function edit($id){
 
 
-        $categories = $this->categories->getCategories();
+        $categories = $this->GrandeCategories->getGrandeCategories();
+        // $categories = $this->categories->getCategories();
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Sanitize POST array
@@ -165,14 +168,14 @@ class ArticlesController extends AppController{
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             
             // Get existing post from model
-            $evenements = $this->articles->getArticleById($id);
+            $article = $this->articles->getArticleById($id);
             $user_id = $article->user_id;
 
             if(empty($_SESSION['user_id'])){
                 redirect('users/login');
             }
             
-            if($post->user_id != $_SESSION['user_id']){
+            if($article->user_id != $_SESSION['user_id']){
                 redirect('users/login');
             }
 

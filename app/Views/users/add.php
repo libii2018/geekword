@@ -1,3 +1,5 @@
+<?php require APPROOT .'/app/Views/inc/header_admin.php'; ?>
+
 <div class="row mb-5">
 
     <div class="col-md-6 mx-auto">
@@ -38,7 +40,7 @@
 
 
 </div>
-
+<?php require APPROOT .'/app/Views/inc/footer_admin.php'; ?>
 
 
 

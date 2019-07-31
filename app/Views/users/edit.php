@@ -1,3 +1,5 @@
+<?php require APPROOT .'/app/Views/inc/header_admin.php'; ?>
+
 <a href="<?php echo URLROOT; ?>/posts" class="">Back</a>
 
 <div class="row mb-5">
@@ -43,3 +45,4 @@
 
 
 </div>
+<?php require APPROOT .'/app/Views/inc/footer_admin.php'; ?>

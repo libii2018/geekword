@@ -1,6 +1,8 @@
-    <!-- ============================================================== -->
-    <!-- main wrapper -->
-    <!-- ============================================================== -->
+<?php require APPROOT .'/app/Views/inc/header_admin.php'; ?>
+
+<!-- ============================================================== -->
+<!-- main wrapper -->
+<!-- ============================================================== -->
 <div class="dashboard-main-wrapper">
     
     <?php require APPROOT .'/app/Views/inc/menu_dash.php'; ?>
@@ -95,4 +97,6 @@
     </div>
         
        
-</div>-
+</div>
+
+<?php require APPROOT .'/app/Views/inc/footer_admin.php'; ?>

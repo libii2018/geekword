@@ -1,3 +1,5 @@
+<?php require APPROOT .'/app/Views/inc/header_admin.php'; ?>
+
 <div class="dashboard-main-wrapper">
 
 
@@ -50,6 +52,7 @@
 </div>
 
 </div>
+<?php require APPROOT .'/app/Views/inc/footer_admin.php'; ?>
 
 
 

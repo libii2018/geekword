@@ -20,7 +20,9 @@ class ChapitreMangasController extends AppController{
     public function index($id_mangas){
 
         // Get posts
-        $chapitres = $this->chapitreMangas->getChapitreByIdWithCategories($id_mangas);
+        $chapitres = $this->chapitreMangas->getChapitreByIdMangas($id_mangas);
+
+        // verifier($chapitres); 
 
         if(empty($_SESSION['user_id'])){
             redirect('users/login');
@@ -73,6 +75,8 @@ class ChapitreMangasController extends AppController{
 
     public function edit($id){
 
+        $mangas = $this->mangas->getMangasById($id);
+
         $categories = $this->categories->getCategories();
 
         if(empty($_SESSION['user_id'])){
@@ -85,16 +89,22 @@ class ChapitreMangasController extends AppController{
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $slug = str_replace(" ", "_", $_POST['titre']);
 
+            if($this->addImage($_FILES) === ''){
+                $img = $mangas->img;
+            }else{
+                $img = $this->addImage($_FILES);
+            }
+
             $data = [
                 'titre' => trim($_POST['titre']),
                 'description' => trim($_POST['description']),
                 'slug' => $slug,
                 'id_mangas' => $id,
-                'img' =>  $this->addImage($_FILES)
+                'img' =>  $img
             ];
 
             // Validated
-            if($this->chapitreMangas->updateChapitre($data)){
+            if($this->chapitreMangas->updateChapitre($data,$id)){
                 // redirect(); 
             }else{
                 die('Something went wrong');
@@ -113,6 +123,8 @@ class ChapitreMangasController extends AppController{
     public function delete($id){
 
         $this->chapitreMangas->deleteChapitre($id);
+
+        redirect('users/mangas/chapitre/index/'.$id);
 
     }
 

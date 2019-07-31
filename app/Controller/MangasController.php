@@ -15,12 +15,15 @@ class MangasController extends AppController{
 
         $this->loadModel('mangas');
         $this->loadModel('categories');
+        $this->loadModel('GrandeCategories');
 
     }
 
     public function add(){
 
-        $categories = $this->categories->getCategories();
+        $categories = $this->GrandeCategories->getGrandeCategories();
+
+        // $categories = $this->categories->getCategories();
 
         if(empty($_SESSION['user_id'])){
             redirect('users/login');
@@ -52,7 +55,7 @@ class MangasController extends AppController{
 
         }else{
             
-            $this->render('users.mangas..add', compact('categories'));
+            $this->render('users.mangas.add', compact('categories'));
 
         }
 
@@ -60,7 +63,8 @@ class MangasController extends AppController{
 
     public function edit($id){
 
-        $categories = $this->categories->getCategories();
+        $categories = $this->GrandeCategories->getGrandeCategories();
+        $mangas = $this->mangas->getMangasById($id);
 
         if(empty($_SESSION['user_id'])){
             redirect('users/login');
@@ -72,16 +76,23 @@ class MangasController extends AppController{
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $slug = str_replace(" ", "_", $_POST['titre']);
 
+
+            if($this->addImage($_FILES) === ''){
+                $img = $mangas->img;
+            }else{
+                $img = $this->addImage($_FILES);
+            }
+
             $data = [
                 'titre' => trim($_POST['titre']),
                 'description' => trim($_POST['description']),
                 'id_categorie' => trim($_POST['categorie']),
                 'slug' => $slug,
-                'img' =>  $this->addImage($_FILES)
+                'img' =>  $img
             ];
 
             // Validated
-            if($this->mangas->updateMangas($data)){
+            if($this->mangas->updateMangas($data,$id)){
                 redirect('/users/index/'.$_SESSION['user_id']);  
             }else{
                 die('Something went wrong');

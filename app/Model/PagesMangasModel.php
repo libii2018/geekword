@@ -16,6 +16,17 @@ class PagesMangasModel extends model{
 
     }
 
+    public function getPageIdChapitre($id_chapitre,$numero_de_page){
+
+        $this->query("SELECT * FROM pages_mangas WHERE numero_de_page = :numero_de_page AND id_chapitre = :id_chapitre");
+
+        $this->db->bind(':id_chapitre', $id_chapitre);
+        $this->db->bind(':numero_de_page', $numero_de_page);
+
+        return $this->db->single();
+
+    }
+
     public function getPagesByChapitre($id_chapitre){
 
         $this->query("SELECT *,
@@ -47,7 +58,16 @@ class PagesMangasModel extends model{
 
     }
 
-    public function getPagesId($id){
+    public function getPagesId($id_chapitre){
+
+        $this->query("SELECT * FROM pages_mangas WHERE id_chapitre = :id_chapitre");
+
+        $this->db->bind(':id_chapitre', $id_chapitre);
+            
+        $row = $this->db->resultSet();
+
+        return $row;
+
 
     }
 
@@ -56,17 +76,20 @@ class PagesMangasModel extends model{
         $this->query("INSERT INTO pages_mangas
                     (
                         id_chapitre, 
-                        img
+                        img,
+                        numero_de_page
                     ) 
                     values
                     (
                         :id_chapitre, 
-                        :img
+                        :img,
+                        :numero_de_page
                     )
                     ");
 
         $this->db->bind(':id_chapitre', $data['id_chapitre']);
         $this->db->bind(':img', $data['img']);
+        $this->db->bind(':numero_de_page', $data['numero_de_page']);
 
         // Execute
         if($this->db->execute()){

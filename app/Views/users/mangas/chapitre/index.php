@@ -1,3 +1,5 @@
+<?php require APPROOT .'/app/Views/inc/header_admin.php'; ?>
+
 <div class="dashboard-main-wrapper">
     
     <?php require APPROOT .'/app/Views/inc/menu_mangas.php'; ?>
@@ -41,9 +43,8 @@
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">TITRE</th>
-                                        <th scope="col">NOM DU MANGAS</th>
                                         <th scope="col">DESCRIPTION</th>
-                                        <th scope="col">CATEGORIES</th>
+                                        <th scope="col">VUE</th>
                                         <th scope="col">LES PAGES</th>
                                         <th scope="col">EDITER</th>
                                         <th scope="col">SUPPRIMER</th>
@@ -54,19 +55,18 @@
                                     <?php foreach($chapitres as $chapitre): ?>
 
                                     <tr>
-                                        <th scope="row"><?= $chapitre->chapitreId; ?></th>
-                                        <th><?= $chapitre->chapitreTitre; ?></th>
-                                        <th><?= $chapitre->mangasTitre; ?></th>
-                                        <th><?= $chapitre->chapitreDescription; ?></th>
-                                        <th><?= $chapitre->nomCategories; ?></th>
-                                        <th><a class="btn btn-primary" href="<?php echo URLROOT; ?>/pagesMangas/index/<?= $chapitre->chapitreId; ?>">VOIR LES PAGES</a></th>
-                                        <!-- <th><img src="<?php echo URLROOT; ?>/public/img/<?= $chapitre->mangasImage; ?>" width="60"></th> -->
-                                        <th><a class="btn btn-primary" href="<?php echo URLROOT; ?>/chapitreMangas/edit/<?= $chapitre->chapitreId; ?>">Editer</a></th>
+                                        <th scope="row"><?= $chapitre->id; ?></th>
+                                        <th><?= $chapitre->titre; ?></th>
+                                        <th><?= $chapitre->description; ?></th>
+                                        <th><?= $chapitre->vue; ?></th>
+                                        <th><a class="btn btn-primary" href="<?php echo URLROOT; ?>/pagesMangas/index/<?= $chapitre->id; ?>">VOIR LES PAGES</a></th>
+                                        <!-- <th><img src="<?php echo URLROOT; ?>/public/img/<?= $chapitre->img; ?>" width="60"></th> -->
+                                        <th><a class="btn btn-primary" href="<?php echo URLROOT; ?>/chapitreMangas/edit/<?= $chapitre->id; ?>">Editer</a></th>
                                         <th>
 
-                                                <form action="<?php echo URLROOT; ?>/chapitreMangas/delete/<?= $chapitre->chapitreId; ?>" method="post" style="display: inline;">
+                                                <form action="<?php echo URLROOT; ?>/chapitreMangas/delete/<?= $chapitre->id; ?>" method="post" style="display: inline;">
                                 
-                                                    <input type="hidden" name="mangasId" value="<?= $chapitre->chapitreId; ?>">
+                                                    <input type="hidden" name="mangasId" value="<?= $chapitre->id; ?>">
                                 
                                                     <button type="submit" class="btn btn-danger">Supprimer</button>
                                 
@@ -101,3 +101,4 @@
     </div>
 
 </div>
+<?php require APPROOT .'/app/Views/inc/footer_admin.php'; ?>

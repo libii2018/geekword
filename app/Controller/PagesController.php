@@ -11,53 +11,115 @@ class PagesController extends AppController{
     public function __construct(){
 
         parent::__construct();
+        $this->loadModel('ChapitreMangas');
         $this->loadModel('articles');
-        $this->loadModel('categories');
-        $this->loadModel('evenements');
+        $this->loadModel('mangas');
+        $this->loadModel('PagesMangas');
     }
 
-    public function index($slug){
+    public function index(){
 
-        $id = $this->categories->getCategoriesByIdSlug($slug)[0]->id;
+        $mangas = $this->mangas->getMangasByCategories('Mangas');
+        $Comic = $this->mangas->getMangasByCategories('Comic');
+        $BD = $this->mangas->getMangasByCategories('BD');
+        $Ligth_Novel = $this->mangas->getMangasByCategories('Ligth Novel');
         $articles = $this->articles->getArticles();
-        // $categories = $this->categories->getCategories($id);
-        $categories = $this->categories->getCategoriesById($id);
-        // $categories = $this->categories->getGrandeCategories($id);
-        $evenements= $this->evenements->getevenements();
-        $GrandeCategories = $this->categories->getGrandeCategories();
 
-        foreach($categories as $categorie){
+        // verifier($mangas);
 
-            $categorie->items = [];
+        $this->render('Pages.index', compact('mangas','Comic','BD','Ligth_Novel','articles')); 
+    }
+
+    public function mangas(){
+
+        $chapitre = $this->mangas->getMangasByCategories('Mangas');
+
+        // verifier($chapitre);
+
+        $this->render('Pages.mangas', compact('chapitre')); 
+    }
+
+    public function article($id){
+
+        $articles = $this->articles->getarticlesById($id);
+
+        $this->render('Pages.article', compact('articles')); 
+    }
+
+    public function chapitre($id_mangas){
+
+        $Mangas = $this->ChapitreMangas->getChapitreByIdWithCategories($id_mangas);
+        $toutChapitreMangas = $this->ChapitreMangas->getChapitreByIdMangas($id_mangas);
+
+        // verifier($toutChapitreMangas); 
+        // verifier($Mangas); 
+
+        $this->render('Pages.chapitre', compact('Mangas','toutChapitreMangas')); 
+    }
     
-            foreach($articles as $article){
-                
-                if($article->categorie_id == $categorie->id){
+    public function pages($id_chapitre, $numero_de_page = null){
 
-                    array_push($categorie->items,$article);
+        // $page = 0;
+
+
+        if($numero_de_page !== null){
+
+            $numero_de_page = (int) $numero_de_page;
+
+            // verifier($page);
+
+            if($this->PagesMangas->getPageIdChapitre($id_chapitre,$numero_de_page) !== false){
+
+                $page = $this->PagesMangas->getPageIdChapitre($id_chapitre,$numero_de_page);
+    
+            }else{
+                
+                if($numero_de_page !== 0){
+
+                    $numero_de_page = $numero_de_page - 1;
+    
+                    $page = $this->PagesMangas->getPageIdChapitre($id_chapitre,$numero_de_page);
+
+
+                }else{
+
+                    $page = $this->PagesMangas->getPageIdChapitre($id_chapitre,1);
 
                 }
 
+                
             }
+
+        }else{
+
+            $page = $this->PagesMangas->getPageIdChapitre($id_chapitre,1);
+
         }
 
+        // verifier($page);
 
-        // var_dump($articles);
-        // die();
-
-        $this->render('Pages.index', compact('articles', 'categories', 'evenements', 'GrandeCategories', 'id')); 
-    }
-
-    public function article($slug){
-        $id = $this->articles->getArticlesByIdSlug($slug)[0]->id;
-        $articles = $this->articles->getArticlesByIdSlug($slug);
-        $GrandeCategories = $this->categories->getGrandeCategories();
-
-        // var_dump($articles);
-        // die();
-
-        $this->render('Pages.articles', compact('articles','GrandeCategories', 'id')); 
+        $this->render('Pages.pages',compact('page'));
 
     }
-    
+
+    public function comic(){
+
+        $Comic = $this->mangas->getMangasByCategories('Comic');
+
+        $this->render('Pages.comic',compact('Comic'));
+    }
+
+    public function bd(){
+
+        $BD = $this->mangas->getMangasByCategories('BD');
+
+        $this->render('Pages.bd',compact('BD'));
+    }
+
+    public function ligth_novel(){
+
+        $Ligth_Novel = $this->mangas->getMangasByCategories('Ligth Novel');
+
+        $this->render('Pages.ligth_novel',compact('Ligth_Novel'));
+    }
 }

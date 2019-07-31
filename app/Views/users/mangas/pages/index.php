@@ -1,3 +1,5 @@
+<?php require APPROOT .'/app/Views/inc/header_admin.php'; ?>
+
 <?php require APPROOT .'/app/Views/inc/menu_mangas.php'; ?>
 
 <div class="dashboard-wrapper">
@@ -15,15 +17,15 @@
         <?php foreach($pages as $page): ?>
 
             
-                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="card">
-                        <img src="<?= URLROOT; ?>/public/img/pages_mangas/<?= $page->pagesImg; ?>" alt="" class="img-fluid">
-                        <div class="card-body">
-                            <h3 class="card-title"><?= $page->pagesImg; ?></h3>
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <img src="<?= URLROOT; ?>/public/img/pages_mangas/<?= $page->img; ?>" alt="" class="img-fluid">
+                    <div class="card-body">
+                        <h3 class="card-title"><?= $page->img; ?></h3>
 
-                        </div>
                     </div>
                 </div>
+            </div>
             
             
 
@@ -35,3 +37,4 @@
 </div>
 
 </div>
+<?php require APPROOT .'/app/Views/inc/footer_admin.php'; ?>

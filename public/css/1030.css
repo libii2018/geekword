@@ -1,0 +1,32 @@
+.Card_container {
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#carossel {
+    flex-direction: column;
+    height: auto;
+}
+
+#carossel a {
+    margin-bottom: 5rem;
+}
+
+.image {
+    width: 100%;
+}
+
+.Card {
+    margin-right: 7em;
+}
+
+.Cards-over {
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Card-over {
+    margin: 2em 2em 0 0;
+}

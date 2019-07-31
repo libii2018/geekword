@@ -1,3 +1,4 @@
+<?php require APPROOT .'/app/Views/inc/header_admin.php'; ?>
 <div class="row mb-5">
 
     <div class="col-md-6 mx-auto">
@@ -20,13 +21,6 @@
                     <label for="title">image: <sup>*</sup></label>
                     <input type="file" name="file" class="form-control-file">
                 </div>
-                <div class="form-group">
-                    <select name="categorie" class="form-control">
-                        <?php foreach($categories as $categorie) : ?>
-                            <option value="<?php echo $categorie->id; ?>"><?php echo  $categorie->nom; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
                 <input type="submit" class="btn btn-primary" value="Submit">
             </form>
         </div>
@@ -35,6 +29,7 @@
 
 
 </div>
+<?php require APPROOT .'/app/Views/inc/footer_admin.php'; ?>
 
 
 

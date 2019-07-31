@@ -1,4 +1,5 @@
-
+<?php require APPROOT .'/app/Views/inc/header_admin.php'; ?>
+<?php require APPROOT .'/app/Views/inc/header_accueil.php'; ?>
     <div class="row mb-5">
         <div class="col-md-6 mx-auto">
             <div class="card card-body bg-light mt-5">
@@ -27,3 +28,5 @@
             </div>
         </div>
     </div>
+
+    <?php require APPROOT .'/app/Views/inc/footer_admin.php'; ?>

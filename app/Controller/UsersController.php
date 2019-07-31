@@ -19,9 +19,10 @@ class UsersController extends AppController{
 
     public function index($user_id){
 
-        // Get posts
-        $articles = $this->articles->getArticlesByIdWithCategories($user_id);  
+        // Get posts  
         $mangas = $this->mangas->getMangasByIdWithCategories($user_id);  
+
+        // verifier($mangas);
 
 
 
@@ -29,7 +30,24 @@ class UsersController extends AppController{
             redirect('users/login');
         }
 
-        $this->render('users.index', compact('articles','mangas'));
+        $this->render('users.index', compact('mangas'));
+
+    }
+
+    public function article($user_id){
+
+        // Get posts
+        $articles = $this->articles->getArticlesByIdWithCategories($user_id);  
+
+        // verifier($articles);
+
+
+
+        if(empty($_SESSION['user_id'])){
+            redirect('users/login');
+        }
+
+        $this->render('users.article', compact('articles'));
 
     }
 
@@ -338,6 +356,16 @@ class UsersController extends AppController{
         unset($_SESSION['user_img']);
         session_destroy();
         redirect('pages/index/mangas');
+    }
+
+    public function delete($id){
+
+        // verifier($id);
+
+        $this->users->deleteUsers($id);
+
+        redirect('/users/index/'.$_SESSION['user_id']); 
+
     }
 
 }
